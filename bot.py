@@ -10,6 +10,7 @@ from telegram.ext import (CommandHandler, Updater, Dispatcher,
 from glob_vars import TOKEN
 import logging
 import datetime
+import os
 
 
 #Gets logging system
@@ -21,6 +22,8 @@ def create_logfile_name():
 
 
 def create_logs():
+    if not os.path.exists("logs/"):
+        os.makedirs("logs/")
     logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
                         filename=create_logfile_name(),
                         filemode='w',
